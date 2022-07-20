@@ -1,7 +1,9 @@
-const PetList = ({pets}) => {
+import PetCard from "./PetCard"
 
+const PetList = ({pets}) => {
+  const renderPets=pets.map(pet=><PetCard keyt={pet.id} pet={pet}/>)
   return (
-    <div>PetList</div>
+    <div>{renderPets}</div>
   )
 }
 
