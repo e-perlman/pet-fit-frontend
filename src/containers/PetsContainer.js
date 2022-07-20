@@ -12,7 +12,10 @@ const PetsContainer = () => {
 
   if (loading) return <h1>Loading...</h1>
   return (
-    <div>PetsContainer</div>
+    <>
+      <div> Pets </div>
+      <PetList pets={pets}/>
+    </>
   )
 }
 

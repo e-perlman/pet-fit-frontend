@@ -1,4 +1,5 @@
-const PetList = () => {
+const PetList = ({pets}) => {
+
   return (
     <div>PetList</div>
   )
