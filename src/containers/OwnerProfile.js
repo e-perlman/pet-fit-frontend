@@ -27,7 +27,7 @@ const OwnerProfile = () => {
         <div>OwnerProfile</div>
         <OwnerFilter owners={owners} onOwnerChange={handleSelectOwner}/>
         <OwnerCard owner={selectedOwner}/>
-        <PetList/>
+        {selectedOwner? <PetList pets={selectedOwner?.pets}/> : null}
     </>
   )
 }
