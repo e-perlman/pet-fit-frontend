@@ -18,7 +18,7 @@ const PetCard = ({pet}) => {
   if(!finalPet) return <h1>Loading...</h1>
   return (
     <div>
-      <h2><Link to={`/plants${finalPet.id}`}>{finalPet.name}</Link></h2>   
+      <h2><Link to={`/pets/${finalPet.id}`}>{finalPet.name}</Link></h2>   
     </div>
   )
 }

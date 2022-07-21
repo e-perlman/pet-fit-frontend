@@ -12,10 +12,10 @@ const PetsContainer = () => {
 
   if (loading) return <h1>Loading...</h1>
   return (
-    <>
+    <div>
       <div> Pets </div>
       <PetList pets={pets}/>
-    </>
+    </div>
   )
 }
 
