@@ -1,7 +1,7 @@
 
 const OwnerFilter = ({owners,onOwnerChange}) => {
     const renderOwners=owners.map(owner => 
-        <option key={owner.id} value={`${owner.first_name} ${owner.last_name}`}>
+        <option key={owner.id} value={`${owner.id}`}>
             {`${owner.first_name} ${owner.last_name}`}
         </option>)
   return (
@@ -9,7 +9,8 @@ const OwnerFilter = ({owners,onOwnerChange}) => {
         <div>Owner Filter</div>
         <form>
             <label htmlFor="name">Name</label>
-            <select onChange={onOwnerChange} required>
+            <select onChange={onOwnerChange}>
+                <option value={null}>Not Selected</option>
                 {renderOwners}
             </select><br/>
         </form>
