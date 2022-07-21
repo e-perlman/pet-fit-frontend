@@ -11,7 +11,7 @@ const PetForm = () => {
     color:'',
     weight:''
   })
-  const history=useHistory
+  const history=useHistory()
 
   const handleChange = (e) => { 
     setPet({
@@ -33,7 +33,7 @@ const PetForm = () => {
       sex:pet.sex,
       breed:pet.breed,
       color:pet.color,
-      weigth:pet.weight
+      weight:pet.weight
     }
     fetch('http://127.0.0.1:9393/pets',{
       method:'POST',
