@@ -10,7 +10,7 @@ const OwnerFilter = ({owners,onOwnerChange}) => {
         <form>
             <label htmlFor="name">Name</label>
             <select onChange={onOwnerChange}>
-                <option value={null}>Not Selected</option>
+                {/* <option value={null}>Not Selected</option> */}
                 {renderOwners}
             </select><br/>
         </form>

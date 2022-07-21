@@ -1,9 +1,18 @@
+
 import PetCard from "./PetCard"
 
+
 const PetList = ({pets}) => {
-  const renderPets=pets?.map(pet=><PetCard key={pet.id} pet={pet}/>)
+console.log('pets in petList', pets)
+  // const renderPets=pets.map(pet=><PetCard key={pet.id} pet={pet}/>)
   return (
-    <div>{renderPets}</div>
+    <div>
+     {pets.map(pet => {return (
+       <PetCard key={pet.id} 
+       pet={pet}/>)
+     })}
+    </div>
+    
   )
 }
 

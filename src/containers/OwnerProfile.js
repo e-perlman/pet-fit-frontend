@@ -1,7 +1,10 @@
 import { useState,useEffect } from "react"
+import {Route,Switch} from 'react-router-dom';
 import OwnerCard from "../components/OwnerCard"
 import OwnerFilter from "../components/OwnerFilter"
 import PetList from "../components/PetList"
+import PetPage from "../components/PetPage";
+import StatusList from "../components/StatusList"
 
 const OwnerProfile = () => {
     const [owners,setOwners]=useState([])
@@ -21,13 +24,15 @@ const OwnerProfile = () => {
     if(selectedOwnerId){
         selectedOwner=owners.find(owner=>owner.id===parseInt(selectedOwnerId))
     }else selectedOwner=null
-   
+
+   console.log({selectedOwner})
   return (
     <>
         <div>OwnerProfile</div>
         <OwnerFilter owners={owners} onOwnerChange={handleSelectOwner}/>
         <OwnerCard owner={selectedOwner}/>
-        {selectedOwner? <PetList pets={selectedOwner?.pets}/> : null}
+        {selectedOwner ? <PetList pets={selectedOwner?.pets}/> : null}
+
     </>
   )
 }

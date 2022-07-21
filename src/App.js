@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Home from './components/Home'
 import Header from './components/Header'
 import Navbar from './components/Navbar'
+import PetPage from './components/PetPage'
 import PetCard from './components/PetCard'
 import PetForm from './components/PetForm'
 import PetsContainer from './containers/PetsContainer'
@@ -20,12 +21,12 @@ function App() {
           <Route  path='/pets/new'>
             <PetForm/>
           </Route>
-          <Route path='/pets/:id'>
-            <PetCard/>
+          <Route path='/pets/:petId'>
+            <PetPage/>
           </Route>
-          <Route  path='/pets'>
+          {/* <Route  path='/pets'>
             <PetsContainer/>
-          </Route>
+          </Route> */}
           <Route path='/ownerprofile'>
             <OwnerProfile/>
           </Route>
@@ -35,7 +36,6 @@ function App() {
           <Route path='/'>
             <Home/>
           </Route>
-
         </Switch>
       </Router>
     </div>
