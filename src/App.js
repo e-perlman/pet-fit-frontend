@@ -7,7 +7,7 @@ import Navbar from './components/Navbar'
 import PetCard from './components/PetCard'
 import PetForm from './components/PetForm'
 import PetsContainer from './containers/PetsContainer'
-import OwnerProfile from './components/OwnerProfile';
+import OwnerProfile from './containers/OwnerProfile';
 import OwnerForm from './components/OwnerForm';
 
 function App() {
