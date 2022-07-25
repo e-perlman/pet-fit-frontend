@@ -2,6 +2,8 @@ import { useState,useEffect } from "react"
 import { useHistory } from "react-router-dom"
 
 const PetForm = () => {
+  const [owners,setOwners]=useState([])
+  const [ownerIds, setOwnerIds] = useState([]);
   const [pet,setPet]=useState({
     name:'',
     species:'',
@@ -11,6 +13,23 @@ const PetForm = () => {
     color:'',
     weight:''
   })
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:9393/owners")
+    .then((r) => r.json())
+    .then((owners) => {
+      setOwners(owners)
+      setOwnerIds(owners.map(owner=>{
+        return {
+          id:owner.id,
+          checked:false
+        }
+      }))
+      });
+  }, [])
+  
+  console.log('owner id',ownerIds)
+
   const history=useHistory()
 
   const handleChange = (e) => { 
@@ -19,6 +38,15 @@ const PetForm = () => {
       [e.target.name]: e.target.value
     })
   }
+  const handleOwnerChange = (position) => {
+    setOwnerIds(
+      ownerIds.map((ownerBox, index) => {
+        return position === index
+          ? { ...ownerBox, checked: !ownerBox.checked }
+          : ownerBox;
+      })
+    );
+  };
 
   const handleSubmit= e => {
     e.preventDefault()
@@ -33,7 +61,8 @@ const PetForm = () => {
       sex:pet.sex,
       breed:pet.breed,
       color:pet.color,
-      weight:pet.weight
+      weight:pet.weight,
+      owner_ids: ownerIds.filter((owner) => owner.checked).map((ownerBox) => `${ownerBox.id}`)
     }
     fetch('http://127.0.0.1:9393/pets',{
       method:'POST',
@@ -44,6 +73,7 @@ const PetForm = () => {
     })
     .then(()=>history.push('/pets'))
   }
+  
   return (
     <>
       <h3>Add a new pet</h3>
@@ -68,6 +98,18 @@ const PetForm = () => {
 
         <label htmlFor="weight">Weight</label>
         <input onChange={handleChange} type='number' name='weight' value={pet.weight} required></input><br/>
+        {owners.map((owner, index) => (
+          <div key={owner.id}>
+            <label htmlFor={owner.id}>{`${owner.first_name} ${owner.last_name}`}</label>
+            <input
+              id="checkbox-"
+              type="checkbox"
+              checked={ownerIds[index]?.checked}
+              value={ownerIds[index]?.id}
+              onChange={() => handleOwnerChange(index)}
+            />
+          </div>
+        ))}
 
         <input type='submit' value='Add Pet'></input>
 

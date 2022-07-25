@@ -7,7 +7,7 @@ const StatusCard = ({petStatus}) => {
   }
   const timestamp=formatDate(petStatus.created_at)
   const vetVisit=formatDate(petStatus.most_recent_vet_visit)
-  console.log(petStatus.most_recent_vet_visit)
+
 
   
   return (
@@ -22,14 +22,4 @@ const StatusCard = ({petStatus}) => {
   )
 }
 
-
-// created_at: "2022-07-19T23:32:07.006Z"
-// cups_of_food_daily: 3
-// daily_exercise_minutes: 60
-// food_type: null
-// hours_of_sleep: 7
-// id: 1
-// most_recent_vet_visit: "2022-02-17"
-// pet_id: 1
-// updated_at: "2022-07-19T23:32:07.006Z"
 export default StatusCard
