@@ -13,20 +13,20 @@ import OwnerProfile from './containers/OwnerProfile';
 import OwnerForm from './components/OwnerForm';
 
 function App() {
-  const [pets,setPets]=useState([])
-  const [owners,setOwners]=useState([])
+  // const [pets,setPets]=useState([])
+  // const [owners,setOwners]=useState([])
  
-  useEffect(() => {
-    fetch("http://127.0.0.1:9393/pets")
-      .then((r) => r.json())
-      .then((pets) => setPets(pets));
-  }, [])
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:9393/pets")
+  //     .then((r) => r.json())
+  //     .then((pets) => setPets(pets));
+  // }, [])
 
-    useEffect(() => {
-        fetch("http://127.0.0.1:9393/owners")
-        .then((r) => r.json())
-        .then((owners) => setOwners(owners));
-    }, [])
+  //   useEffect(() => {
+  //       fetch("http://127.0.0.1:9393/owners")
+  //       .then((r) => r.json())
+  //       .then((owners) => setOwners(owners));
+  //   }, [])
 
   return (
     <div className="App">
