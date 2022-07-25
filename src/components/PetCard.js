@@ -9,8 +9,6 @@ const PetCard = ({pet}) => {
   return (
     <div>
       <h2><Link to={`/pets/${pet.id}`}>{pet.name}</Link></h2>  
-      <StatusCard petStatus={pet.pet_statuses}/>
-      <StatusForm pet={pet}/>
     </div>
   )
 }

@@ -25,7 +25,6 @@ const OwnerProfile = () => {
         selectedOwner=owners.find(owner=>owner.id===parseInt(selectedOwnerId))
     }else selectedOwner=null
 
-   console.log({selectedOwner})
   return (
     <>
         <div>OwnerProfile</div>

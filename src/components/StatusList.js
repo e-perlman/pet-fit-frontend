@@ -1,7 +1,7 @@
 import StatusCard from "./StatusCard"
 
-const StatusList = ({pets}) => {
-    const renderStatuses=pets?.map(pet=><StatusCard key={pet.id} petStatus={pet.pet_statuses}/>)
+const StatusList = ({pet}) => {
+    const renderStatuses=pet.pet_statuses?.map(pet_status=><StatusCard key={pet_status.id} petStatus={pet_status}/>)
   return (
     <div>{renderStatuses}</div>
   )
