@@ -6,20 +6,28 @@ import StatusList from "./StatusList"
 const PetPage = () => {
     const {petId}= useParams()
     const [petObj, setPetObj] = useState(null)
+    const [petStatuses,setPetStatuses]=useState(null)
 
     useEffect(() => {
         fetch(`http://127.0.0.1:9393/pets/${petId}`)
         .then(resp=>resp.json())
-        .then(pet=>setPetObj(pet))
+        .then(pet=>{
+            setPetObj(pet)
+            setPetStatuses(pet.pet_statuses)
+        })
     }, [petId])
     
     if(!petObj) return <h1>Loading...</h1>
 
+    const handleAddStatus = (newStatus) => {
+        setPetStatuses([...petStatuses,newStatus])
+    }
+
     return (
-        <div>Pet page
+        <div>
             <h1>{petObj.name}</h1>
-            <StatusForm/>
-            <StatusList pet={petObj}/>
+            <StatusForm pet={petObj} onAddStatus={handleAddStatus}/>
+            <StatusList petStatuses={petStatuses}/>
         </div>
     )
 }

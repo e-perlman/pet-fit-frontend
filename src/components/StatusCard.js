@@ -7,6 +7,7 @@ const StatusCard = ({petStatus}) => {
   }
   const timestamp=formatDate(petStatus.created_at)
   const vetVisit=formatDate(petStatus.most_recent_vet_visit)
+  console.log(petStatus.most_recent_vet_visit)
 
   
   return (
