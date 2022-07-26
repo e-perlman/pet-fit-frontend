@@ -30,7 +30,7 @@ const OwnerProfile = () => {
         <div>OwnerProfile</div>
         <OwnerFilter owners={owners} onOwnerChange={handleSelectOwner}/>
         <OwnerCard owner={selectedOwner}/>
-        {selectedOwner ? <PetList pets={selectedOwner?.pets}/> : null}
+        {selectedOwner ? <PetList pets={selectedOwner?.pets} interactive={false}/> : null}
 
     </>
   )

@@ -1,9 +1,9 @@
 
 import PetCard from "./PetCard"
 
-const PetList = ({pets}) => {
+const PetList = ({pets,interactive,onDeletePet}) => {
 
-  const renderPets=pets.map(pet=><PetCard key={pet.id} pet={pet}/>)
+  const renderPets=pets.map(pet=><PetCard key={pet.id} pet={pet} interactive={interactive} onDeletePet={onDeletePet}/>)
   return (
     <div>
      {renderPets}
