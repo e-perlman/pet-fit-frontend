@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react"
+import EditOwner from "../components/EditOwner"
 import OwnerCard from "../components/OwnerCard"
 import OwnerFilter from "../components/OwnerFilter"
 import PetList from "../components/PetList"
@@ -7,6 +8,7 @@ const OwnerProfile = () => {
     const [owners,setOwners]=useState([])
     const [loading, setLoading] = useState(true)
     const [selectedOwnerId, setSelectedOwnerId]=useState(null)
+    const [showForm,setShowForm]=useState(false)
 
     useEffect(() => {
         fetch("http://127.0.0.1:9393/owners")
@@ -32,11 +34,16 @@ const OwnerProfile = () => {
         selectedOwner=owners.find(owner=>owner.id===parseInt(selectedOwnerId))
     }else selectedOwner=null
 
+    const showEditForm = () => { setShowForm(!showForm)}
+
   return (
     <>
         <div>OwnerProfile</div>
         <OwnerFilter owners={owners} onOwnerChange={handleSelectOwner}/>
-        <OwnerCard owner={selectedOwner} onDeleteProfile={removeOwner}/>
+        {selectedOwner? <OwnerCard owner={selectedOwner} onDeleteProfile={removeOwner}/>:<h1>Please Select an Owner!</h1>}
+        {selectedOwner && !showForm ? <button onClick={showEditForm}>Edit {`${selectedOwner.first_name}'s Profile`}</button> :null}
+        {showForm? <button onClick={showEditForm}> Cancel Edit Profile</button>:null}
+        {showForm? <EditOwner owner={selectedOwner}/>:null}
         {selectedOwner ? <PetList pets={selectedOwner?.pets} interactive={false}/> : null}
 
     </>
