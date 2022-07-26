@@ -27,6 +27,18 @@ const OwnerProfile = () => {
     .then((r) => r.json())
     }
 
+    const handleUpdateOwner = (updatedOwner) => {
+      const updatedOwners = owners.map((owner) => {
+        if (owner.id === updatedOwner.id) {
+          return updatedOwner;
+        } else {
+          return owner;
+        }
+      });
+      setOwners(updatedOwners)
+      setShowForm(!showForm)
+    }
+
     const handleSelectOwner = (e) => { setSelectedOwnerId(e.target.value)}
  
     let selectedOwner
@@ -43,7 +55,7 @@ const OwnerProfile = () => {
         {selectedOwner? <OwnerCard owner={selectedOwner} onDeleteProfile={removeOwner}/>:<h1>Please Select an Owner!</h1>}
         {selectedOwner && !showForm ? <button onClick={showEditForm}>Edit {`${selectedOwner.first_name}'s Profile`}</button> :null}
         {showForm? <button onClick={showEditForm}> Cancel Edit Profile</button>:null}
-        {showForm? <EditOwner owner={selectedOwner}/>:null}
+        {showForm? <EditOwner selectedOwner={selectedOwner} onUpdateOwner={handleUpdateOwner}/>:null}
         {selectedOwner ? <PetList pets={selectedOwner?.pets} interactive={false}/> : null}
 
     </>
