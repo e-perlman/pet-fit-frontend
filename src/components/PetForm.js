@@ -27,8 +27,6 @@ const PetForm = () => {
       }))
       });
   }, [])
-  
-  console.log('owner id',ownerIds)
 
   const history=useHistory()
 

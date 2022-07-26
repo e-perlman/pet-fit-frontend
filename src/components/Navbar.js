@@ -48,6 +48,15 @@ const Navbar = () => {
             }}
                 exact
                 style={style}
+                to='/owners/new'
+            >New Owner</NavLink>
+            <NavLink
+            activeStyle={{
+                fontWeight: "bolder",
+                color: "red"
+            }}
+                exact
+                style={style}
                 to="/ownerprofile"
             >Owner Profile</NavLink>
     </div>
