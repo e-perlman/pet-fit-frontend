@@ -52,7 +52,7 @@ const Navbar = () => {
                 Home
               </Button>
               <Button component={NavLink} exact to="/pets" activeStyle={active} className={classes.navlink}>
-                Pets
+                All Pets
               </Button>
               <Button component={NavLink} exact to="/pets/new" activeStyle={active} className={classes.navlink}>
                 New Pet

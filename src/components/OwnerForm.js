@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { Button,TextField,InputAdornment,FormControl,InputLabel} from '@mui/material'
-import { Box, Checkbox, FormControlLabel, FormGroup, FormLabel } from "@material-ui/core"
+import { Button,TextField} from '@mui/material'
+import { Checkbox, FormControlLabel, FormLabel, Typography } from "@material-ui/core"
 
 const textStyle={ width: "400px", margin: "5px" }
 
@@ -72,7 +72,8 @@ const OwnerForm = () => {
   }
   return (
     <div style={{justifyContent:'center',margin:'auto', width:'50%'}}>
-      <h3>Add a new owner</h3>
+      <Typography gutterBottom variant="h5" component="div"> Make a New Owner Profile!</Typography>
+
       <form onSubmit={handleSubmit}>
         <TextField onChange={handleChange}  style={textStyle} type='text' label='First Name' placeholder='Your First Name' focused name='firstName' value={owner.firstName} required></TextField><br/>
 
@@ -111,7 +112,7 @@ const OwnerForm = () => {
           </div>
         ))} */}
         </div>
-        <Button type='submit' value='Add Owner' variant="contained" color="primary">Add Pet</Button>
+        <Button type='submit' value='Add Owner' variant="contained" color="primary">Add Profile</Button>
 
       </form>
     </div>
