@@ -90,7 +90,7 @@ const OwnerForm = () => {
               id="checkbox-"
               type="checkbox"
               checked={petIds[index]?.checked}
-              value={petIds[index]?.id}
+              value={petIds[index]?.id || false}
               onChange={() => handleOwnerChange(index)}
             />
           </div>

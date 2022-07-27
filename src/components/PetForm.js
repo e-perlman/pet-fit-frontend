@@ -103,7 +103,7 @@ const PetForm = () => {
               id="checkbox-"
               type="checkbox"
               checked={ownerIds[index]?.checked}
-              value={ownerIds[index]?.id}
+              value={ownerIds[index]?.id || false}
               onChange={() => handleOwnerChange(index)}
             />
           </div>
