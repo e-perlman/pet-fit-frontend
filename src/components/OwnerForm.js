@@ -1,5 +1,9 @@
 import { useState,useEffect } from "react"
 import { useHistory } from "react-router-dom"
+import { Button,TextField,InputAdornment,FormControl,InputLabel} from '@mui/material'
+import { Box, Checkbox, FormControlLabel, FormGroup, FormLabel } from "@material-ui/core"
+
+const textStyle={ width: "400px", margin: "5px" }
 
 const OwnerForm = () => {
   const [pets,setPets]=useState([])
@@ -66,24 +70,35 @@ const OwnerForm = () => {
     })
     .then(()=>history.push('/ownerprofile'))
   }
-
   return (
-    <>
+    <div style={{justifyContent:'center',margin:'auto', width:'50%'}}>
       <h3>Add a new owner</h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input onChange={handleChange} type='text' name='firstName' value={owner.firstName} required></input><br/>
+        <TextField onChange={handleChange}  style={textStyle} type='text' label='First Name' placeholder='Your First Name' focused name='firstName' value={owner.firstName} required></TextField><br/>
 
-        <label htmlFor="lastName">Last Name</label>
-        <input onChange={handleChange} type='text' name='lastName' value={owner.lastName} required></input><br/>
+        <TextField onChange={handleChange} style={textStyle} type='text' label='Last Name' placeholder='Your Last Name' focused name='lastName' value={owner.lastName} required></TextField><br/>
 
-        <label htmlFor="age">Age</label>
-        <input onChange={handleChange} type='number' name='age' value={owner.age} required></input><br/>
+        <TextField onChange={handleChange} style={textStyle} type='number' label='Age' placeholder='Your age' focused name='age' value={owner.age} required></TextField><br/>
 
-        <label htmlFor="email">Email</label>
-        <input onChange={handleChange} type='text' name='email' value={owner.email} required></input><br/>
+        <TextField onChange={handleChange} style={textStyle} type='text' label='Email' placeholder='Your email' focused name='email' value={owner.email} required></TextField><br/>
 
-        {pets.map((pet, index) => (
+        <div style={{width:'400px',flexWrap:'wrap',margin:'auto'}}>
+          <FormLabel component='legend'>Choose Your Pets</FormLabel>
+          {pets.map((pet, index) => (
+            <FormControlLabel key={pet.id} control={
+              <Checkbox
+                id="checkbox-"
+                type="checkbox"
+                color='primary'
+                checked={petIds[index]?.checked}
+                value={petIds[index]?.id || false}
+                onChange={() => handleOwnerChange(index)}
+              />
+            } 
+            label={pet.name} 
+            />
+          ))}
+        {/* {pets.map((pet, index) => (
           <div key={pet.id}>
             <label htmlFor={pet.id}>{pet.name}</label>
             <input
@@ -94,12 +109,12 @@ const OwnerForm = () => {
               onChange={() => handleOwnerChange(index)}
             />
           </div>
-        ))}
-
-        <input type='submit' value='Add Owner'></input>
+        ))} */}
+        </div>
+        <Button type='submit' value='Add Owner' variant="contained" color="primary">Add Pet</Button>
 
       </form>
-    </>
+    </div>
   )
 }
 

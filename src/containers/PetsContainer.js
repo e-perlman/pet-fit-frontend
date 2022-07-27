@@ -24,7 +24,6 @@ const PetsContainer = () => {
 
   return (
     <div>
-      <div> Pets </div>
       <PetList pets={pets} interactive={true} onDeletePet={removePet}/>
     </div>
   )
