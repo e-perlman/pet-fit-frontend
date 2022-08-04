@@ -112,7 +112,7 @@ const OwnerForm = () => {
           </div>
         ))} */}
         </div>
-        <Button type='submit' value='Add Owner' variant="contained" color="primary">Add Profile</Button>
+        <Button type='submit' value='Add Owner' variant="contained" color="primary">Update Profile</Button>
 
       </form>
     </div>

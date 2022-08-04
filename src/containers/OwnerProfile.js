@@ -1,3 +1,4 @@
+import { Button,Typography  } from "@material-ui/core"
 import { useState,useEffect } from "react"
 import EditOwner from "../components/EditOwner"
 import OwnerCard from "../components/OwnerCard"
@@ -49,16 +50,18 @@ const OwnerProfile = () => {
     const showEditForm = () => { setShowForm(!showForm)}
 
   return (
-    <>
-        <div>OwnerProfile</div>
+    <div style={{width:'600px',margin:'auto',justifyContent:'center'}}>
         <OwnerFilter owners={owners} onOwnerChange={handleSelectOwner}/>
         {selectedOwner? <OwnerCard owner={selectedOwner} onDeleteProfile={removeOwner}/>:<h1>Please Select an Owner!</h1>}
-        {selectedOwner && !showForm ? <button onClick={showEditForm}>Edit {`${selectedOwner.first_name}'s Profile`}</button> :null}
-        {showForm? <button onClick={showEditForm}> Cancel Edit Profile</button>:null}
+        {selectedOwner && !showForm ? <Button style={{marginTop:'30px'}} size='large' variant="contained" color='primary' onClick={showEditForm}>Edit {`${selectedOwner.first_name}'s Profile`}</Button> :null}
+        {showForm? <Button style={{marginTop:'30px'}} size='large' variant="contained" color='primary' onClick={showEditForm}> Cancel Edit Profile</Button>:null}
         {showForm? <EditOwner selectedOwner={selectedOwner} onUpdateOwner={handleUpdateOwner}/>:null}
+        {selectedOwner ? <Typography style={{marginTop:'50px'}} variant="h4" component="div">{selectedOwner.first_name}'s Pets:</Typography > : null}
         {selectedOwner ? <PetList pets={selectedOwner?.pets} interactive={false}/> : null}
+    
+    
 
-    </>
+    </div>
   )
 }
 

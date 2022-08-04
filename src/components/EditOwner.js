@@ -1,5 +1,10 @@
 import React from 'react'
 import { useState,useEffect } from "react"
+import { Button,TextField} from '@mui/material'
+import { Checkbox, FormControlLabel, FormLabel, Typography } from "@material-ui/core"
+
+const textStyle={ width: "400px", margin: "5px" }
+
 const EditOwner = ({selectedOwner,onUpdateOwner}) => {
     const [pets,setPets]=useState([])
     const [petIds, setPetIds] = useState([]);
@@ -67,7 +72,38 @@ const EditOwner = ({selectedOwner,onUpdateOwner}) => {
     
   return (
     <>
-      <h3>Add a new owner</h3>
+      <div style={{justifyContent:'center',margin:'auto', width:'600xp'}}>
+      <form onSubmit={handleSubmit}>
+        <TextField onChange={handleChange}  style={textStyle} type='text' label='First Name' focused name='firstName' value={owner.firstName} required></TextField><br/>
+
+        <TextField onChange={handleChange} style={textStyle} type='text' label='Last Name'focused name='lastName' value={owner.lastName} required></TextField><br/>
+
+        <TextField onChange={handleChange} style={textStyle} type='number' label='Age' focused name='age' value={owner.age} required></TextField><br/>
+
+        <TextField onChange={handleChange} style={textStyle} type='text' label='Email' focused name='email' value={owner.email} required></TextField><br/>
+
+        <div style={{width:'400px',flexWrap:'wrap',margin:'auto'}}>
+          <FormLabel component='legend'>Choose Your Pets</FormLabel>
+          {pets.map((pet, index) => (
+            <FormControlLabel key={pet.id} control={
+              <Checkbox
+                id="checkbox-"
+                type="checkbox"
+                color='primary'
+                checked={petIds[index]?.checked}
+                value={petIds[index]?.id || false}
+                onChange={() => handleOwnerChange(index)}
+              />
+            } 
+            label={pet.name} 
+            />
+          ))}
+        </div>
+        <Button type='submit' value='Add Owner' variant="contained" color="primary">Add Profile</Button>
+
+      </form>
+    </div>
+      {/* <h3>Add a new owner</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name</label>
         <input onChange={handleChange} type='text' name='firstName' value={owner.firstName} required></input><br/>
@@ -96,7 +132,7 @@ const EditOwner = ({selectedOwner,onUpdateOwner}) => {
 
         <input type='submit' value='Update Owner'></input>
 
-      </form>
+      </form> */}
     </>
   )
 }
