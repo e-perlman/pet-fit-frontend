@@ -74,6 +74,7 @@ const PetForm = () => {
       body: JSON.stringify(newPet)
     })
     .then(()=>history.push('/pets'))
+    
   }
   
   return (
@@ -102,7 +103,7 @@ const PetForm = () => {
                   id="checkbox-"
                   type="checkbox"
                   color='primary'
-                  checked={ownerIds[index]?.checked}
+                  checked={ownerIds[index]?.checked || false}
                   value={ownerIds[index]?.id || false}
                   onChange={() => handleOwnerChange(index)}
                 />

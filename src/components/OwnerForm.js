@@ -91,7 +91,7 @@ const OwnerForm = () => {
                 id="checkbox-"
                 type="checkbox"
                 color='primary'
-                checked={petIds[index]?.checked}
+                checked={petIds[index]?.checked || false}
                 value={petIds[index]?.id || false}
                 onChange={() => handleOwnerChange(index)}
               />
@@ -112,7 +112,7 @@ const OwnerForm = () => {
           </div>
         ))} */}
         </div>
-        <Button type='submit' value='Add Owner' variant="contained" color="primary">Update Profile</Button>
+        <Button type='submit' value='Add Owner' variant="contained" color="primary">Add Profile</Button>
 
       </form>
     </div>

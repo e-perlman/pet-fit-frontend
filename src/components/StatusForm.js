@@ -1,4 +1,8 @@
 import { useState,useEffect } from "react"
+import { Button,TextField} from '@mui/material'
+import { Typography } from "@material-ui/core"
+
+const textStyle={ width: "400px", margin: "5px" }
 
 
 const StatusForm = ({pet,onAddStatus}) => {
@@ -48,25 +52,20 @@ const StatusForm = ({pet,onAddStatus}) => {
   }
   return (
     <>
-      <h3>Add a new status</h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="foodType">Food Type:</label>
-        <input onChange={handleChange} type='text' name='foodType' value={petStatus.foodType} required></input><br/>
+        <Typography style={{marginBottom:"20px"}}variant="h5" component='div'>Add A New Status!</Typography>
 
-        <label htmlFor="cupsOfFoodDaily">Cups of Food: </label>
-        <input onChange={handleChange} type='text' name='cupsOfFoodDaily' value={petStatus.cupsOfFoodDaily} required></input><br/>
+        <TextField onChange={handleChange}  style={textStyle} type='text' label='Food Type' placeholder="Your Pet's Food " focused name='foodType' value={petStatus.foodType} required></TextField><br/>
 
-        <label htmlFor="dailyExerciseMinutes">Exercise (min):</label>
-        <input onChange={handleChange} type='number' name='dailyExerciseMinutes' value={petStatus.dailyExerciseMinutes} required></input><br/>
+        <TextField onChange={handleChange} style={textStyle} type='text' label='Cups of Food Eaten' placeholder='Number of Cups Eaten Today' focused name='cupsOfFoodDaily' value={petStatus.cupsOfFoodDaily} required></TextField><br/>
 
-        <label htmlFor="hoursOfSleep">Hours of Sleep:</label>
-        <input onChange={handleChange} type='text' name='hoursOfSleep' value={petStatus.hoursOfSleep} required></input><br/>
+        <TextField onChange={handleChange} style={textStyle} type='number' label='Minutes of Exercise' placeholder='Minutes of Exercise Today' focused name='dailyExerciseMinutes' value={petStatus.dailyExerciseMinutes} required></TextField><br/>
 
-        <label htmlFor="mostRecentVetVisit">Most Recent Vet Visit:</label>
-        <input onChange={handleChange} type='date' name='mostRecentVetVisit' value={petStatus.mostRecentVetVisit} required></input><br/>
+        <TextField onChange={handleChange} style={textStyle} type='text' label='Hours of Sleep' placeholder='Amount of Sleep Today' focused name='hoursOfSleep' value={petStatus.hoursOfSleep} required></TextField><br/>
 
-        <input type='submit' value='Add Pet Status'></input>
+        <TextField onChange={handleChange} style={textStyle} type='date' label='Most Recent Vet Visit' placeholder='Date of Last Vet Visit' focused name='mostRecentVetVisit' value={petStatus.mostRecentVetVisit} required></TextField><br/>
 
+        <Button type='submit' value='Add Pet Status' variant="contained" color="primary">Add Status</Button>
       </form>
     </>
   )

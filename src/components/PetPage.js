@@ -1,3 +1,4 @@
+import { Typography } from "@material-ui/core"
 import { useState , useEffect } from "react"
 import {useParams } from "react-router-dom"
 import StatusForm from "./StatusForm"
@@ -25,7 +26,7 @@ const PetPage = () => {
 
     return (
         <div>
-            <h1>{petObj.name}</h1>
+            <Typography variant='h2' component='div' >{petObj.name}</Typography>
             <StatusForm pet={petObj} onAddStatus={handleAddStatus}/>
             <StatusList petStatuses={petStatuses}/>
         </div>
